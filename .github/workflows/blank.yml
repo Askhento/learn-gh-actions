@@ -17,7 +17,7 @@ jobs:
 
         steps:
           - run : export ODD_VERSION="true"
-          - run : export RELEASE="false" && [[ $ODD_VERSION == 'true' && "${{github.event.inputs.pre-release }}" == 'true' ]] && "true"
+          - run : export RELEASE="false" && [[ $ODD_VERSION == 'true' && "${{github.event.inputs.pre-release }}" == 'true' ]] && RELEASE="true"
           - run : echo $PRE_RELEASE
             env : 
               PRE_RELEASE: ${{ env.RELEASE=='true' && '--pre' || 'lol' }}
