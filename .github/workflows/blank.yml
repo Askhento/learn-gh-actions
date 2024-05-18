@@ -16,7 +16,7 @@ jobs:
         runs-on: ubuntu-latest
         defaults:
           run:
-            shell: bash
+            shell: sh
         steps:
           
           - run : export ODD_VERSION="true"
