@@ -20,4 +20,4 @@ jobs:
           - run : export RELEASE="false" && [[ODD_VERSION == 'true' && ${{github.event.inputs.pre-release }} == 'true' ]] && "true"
           - run : echo $PRE_RELEASE
             env : 
-              PRE_RELEASE: ${{RELEASE='true' && '--pre' || 'lol' }}
+              PRE_RELEASE: ${{ env.RELEASE='true' && '--pre' || 'lol' }}
