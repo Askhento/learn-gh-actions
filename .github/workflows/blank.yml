@@ -14,9 +14,11 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
-
+        defaults:
+          run:
+            shell: bash
         steps:
-          - shell : bash
+          
           - run : export ODD_VERSION="true"
           - run : export RELEASE="false" && [[ "${ODD_VERSION}" == "true" ]] && RELEASE="true"
           - run : echo $PRE_RELEASE
