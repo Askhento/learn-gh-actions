@@ -20,7 +20,9 @@ jobs:
         steps:
           
           - run : export ODD_VERSION="true"
-          - run : '[[ "${ODD_VERSION}" == "true" && "${{github.event.inputs.pre-release}}" == "true" ]] && export RELEASE="true" || export RELEASE="false"' 
+          - name: Set env
+            run: 'echo RELEASE=$("true" && [["${{github.event.inputs.pre-release}}" == "true" ]]  || "false") >> $GITHUB_ENV'
+          # - run : '[[ "${ODD_VERSION}" == "true" && "${{github.event.inputs.pre-release}}" == "true" ]] && export RELEASE="true" || export RELEASE="false"' 
           - run : echo $RELEASE
           - run : echo $PRE_RELEASE
             env : 
