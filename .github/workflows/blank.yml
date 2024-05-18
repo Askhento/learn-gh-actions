@@ -16,11 +16,11 @@ jobs:
         runs-on: ubuntu-latest
         defaults:
           run:
-            shell: sh
+            shell: bash
         steps:
           
           - run : export ODD_VERSION="true"
-          - run : export RELEASE="false" && [[ "${ODD_VERSION}" == "true" ]] && RELEASE="true"
+          - run : export RELEASE="false" && [ "${ODD_VERSION}" == "true" ] && RELEASE="true"
           - run : echo $PRE_RELEASE
             env : 
               PRE_RELEASE: ${{ env.RELEASE=='true' && '--pre' || 'lol' }}
