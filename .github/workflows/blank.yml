@@ -20,8 +20,7 @@ jobs:
         steps:
           - run : |
               odd="true"
-              echo "$odd"
-              echo "${odd}"
+              echo "version is pre-release: ${odd}"
               [[ "${odd}" == 'true' && "${{github.event.inputs.pre-release}}" == "true" ]] && release="true" || release="false"
               echo "RELEASE=$release" >> $GITHUB_ENV
               
