@@ -1,0 +1,21 @@
+name : test0
+on:
+  workflow_dispatch:
+      inputs:
+          publish:
+              type: boolean
+              description: Publish extension
+              default: true
+          pre-release:
+              type: boolean
+              description: Publish for devs
+              default: false
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+          - run : echo $PRE_RELEASE
+            env : 
+              PRE_RELEASE: ${{ github.event.inputs.pre-release }}
