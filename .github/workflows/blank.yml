@@ -16,6 +16,7 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
+          - run : export MY_VAR="false"
           - run : echo $PRE_RELEASE
             env : 
-              PRE_RELEASE: ${{ github.event.inputs.pre-release }}
+              PRE_RELEASE: ${{ env.MY_VAR == 'true' && github.event.inputs.pre-release == 'true' && "--pre" || "lol" }}
