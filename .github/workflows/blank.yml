@@ -25,6 +25,10 @@ jobs:
               echo "RELEASE=$release" >> $GITHUB_ENV
               
           - run : echo $RELEASE
-          - run : echo $PRE_RELEASE
-            env : 
-              PRE_RELEASE: ${{ env.RELEASE=='true' && '--pre' || 'lol' }}
+          - name: Early exit
+            run: |
+              
+              gh run cancel ${{ github.run_id }}
+              gh run watch ${{ github.run_id }}
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
